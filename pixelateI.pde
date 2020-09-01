@@ -1,5 +1,7 @@
 
-File dir = new File("/Users/thor/tmp/data/famous/keep");
+//File dir = new File("/Users/thor/tmp/data/famous/keep");
+File dir = new File(System.getProperty("user.home") + "/Documents/Processing/pixelateI/data");
+//File dir = new File(dataPath("."));
 File [] files = dir.listFiles();
 
 PImage images[];
@@ -14,11 +16,12 @@ int counter;
 
 
 void settings() {
-  size(800,600);
+  size(1000,800);
 
 }
 
 void setup() {
+  println(System.getProperty("user.home"));
   frameRate(i);
   counter=files.length;
   imageMode(CORNERS);
@@ -27,7 +30,7 @@ void setup() {
   for(int i=0;i<files.length;i++) {  
     String name = files[i].getAbsolutePath();
     PImage t = loadImage(name);
-    t.resize(800,0);
+    t.resize(600,0);
     images[i]=t;
   } 
   counter=images.length-1;
