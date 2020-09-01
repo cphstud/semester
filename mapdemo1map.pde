@@ -39,7 +39,6 @@ void setup() {
 
 
 void draw() {
-  //currentMap.zoomOut();
     currentMap.draw();
     println(frameCount);
 }
@@ -53,7 +52,6 @@ void keyPressed() {
         counter--;
     } else if (key == '2') {
       arealMap.zoomAndPanTo(counter, new Location(lat,lng));
-      //map2.zoomOut();
         currentMap = arealMap;
         counter--;
     } 
