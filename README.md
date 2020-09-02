@@ -13,3 +13,7 @@ Plantuml [link](http://www.plantuml.com/plantuml/png/NPEnZjim38PtFqMsj5a2z0dI9kX
 and ..
 
 ![](smileymove.gif)
+
+and
+
+![](smileymoving2.gif)
