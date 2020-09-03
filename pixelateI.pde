@@ -1,8 +1,4 @@
-
-//File dir = new File("/Users/thor/tmp/data/famous/keep");
-File dir = new File(System.getProperty("user.home") + "/Documents/Processing/pixelateI/data");
-//File dir = new File(dataPath("."));
-File [] files = dir.listFiles();
+import java.io.*;
 
 PImage images[];
 int numOfPics;
@@ -13,16 +9,24 @@ int factor=100;
 float r = 255;
 int mouseDelay = 0;
 int counter;
+FilenameFilter MacFilter;
 
 
-void settings() {
-  size(1000,800);
 
-}
 
 void setup() {
+  size(1000,800);
+  MacFilter = new FilenameFilter() {
+    @Override
+    public boolean accept(File dir, String name) {
+      return !name.equals(".DS_Store");
+    }};
+  File dir = new File(System.getProperty("user.home") + "/Documents/Processing/pixelateI/data");
+  File [] files = dir.listFiles(MacFilter);
+
   println(System.getProperty("user.home"));
   frameRate(i);
+
   counter=files.length;
   imageMode(CORNERS);
   colorMode(HSB,360);
@@ -30,14 +34,17 @@ void setup() {
   for(int i=0;i<files.length;i++) {  
     String name = files[i].getAbsolutePath();
     PImage t = loadImage(name);
-    t.resize(600,0);
+    t.resize(800,0);
     images[i]=t;
   } 
   counter=images.length-1;
+
+
 }
 
+
 void mousePressed(){
-   looping =! looping;
+  looping =! looping;
 }
 
 void keyPressed() {
@@ -53,7 +60,7 @@ void draw() {
   println("C " + factor);
   image(images[counter],0,0);
   factor--;
-    if (factor < 30) {
+  if (factor < 30) {
     frameRate(8);
   } else if (factor < 10) {
     frameRate(2);
@@ -61,7 +68,7 @@ void draw() {
     frameRate(1);
   } 
   if (factor > 1) {
-  pixelateImage(images[counter], factor);
+    pixelateImage(images[counter], factor); //<>//
   }
 }
 
@@ -74,6 +81,7 @@ void pixelateImage(PImage p, int pxSize) {
     ratio = width/height;
   }
   
+
   int pxH = int(pxSize * ratio);
   noStroke();
   for (int x=0; x<width; x+=pxSize) {
