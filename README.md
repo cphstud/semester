@@ -17,3 +17,7 @@ and ..
 and
 
 ![](smileymoving2.gif)
+
+and
+
+![](smiley-pressed-and-stuck.gif)
